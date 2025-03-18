@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	printf("Creating .VHD file (fs: %ld, sys: %ld, user: %ld)... ", fs_size, system_size, rom_size);
-	if (guestfs_disk_create(g, argv[2], "raw", fs_size + system_size + rom_size, -1) == -1)
+	if (guestfs_disk_create(g, argv[2], "raw", fs_size + system_size + (rom_size * 1.001), -1) == -1)
 		exit(EXIT_FAILURE);
 	if (guestfs_add_drive_opts(g, argv[2], GUESTFS_ADD_DRIVE_OPTS_FORMAT, "raw", -1) == -1)
 		exit(EXIT_FAILURE);
